@@ -13,8 +13,10 @@ describe('Main Page Test',()=>{
         });*/
 
     context(`viewport descktop`,() =>{
-        cy.viewport(1920,1080);
-        });
+        beforeEach(()=>{
+            cy.viewport(1920,1080);
+            });
+
 
     it('should have the correct header elements', () => {
         cy.get('#section-header')
@@ -26,12 +28,20 @@ describe('Main Page Test',()=>{
             .should('exist')
         });
     it(`Header Logo`, () =>{
-        cy.get(`.Header__LogoImage Header__LogoImage--transparent`)
+        cy.get('.Header__LogoImage--transparent')
             .should(`exist`)
+            .and(`be.visible`);
         });
-    it(`Header menu`, () =>{
-        cy.get(`.HorizontalList HorizontalList--spacingExtraLoose`)
+    it(`Main menu`, () =>{
+        cy.get('.Header__MainNav > .HorizontalList')
             .should(`exist`)
     });
+    });
 
+    context(`viewport mobile`,() => {
+        beforeEach(() => {
+            cy.viewport(320, 520);
+        });
+        //іт для моб версії
+    });
 });
