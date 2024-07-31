@@ -7,10 +7,6 @@ describe('Main Page Test',()=>{
      cy.url()
          .should('eq','https://theconnectedshop.com/')
     });
-   /* it('Check title for home page',()=>{
-        cy.title()
-            .should('eq','&nbsp;The Connected Shop - Smart Locks, Smart Sensors, Smart Home & Office&nbsp;')
-        });*/
 
     context(`viewport descktop`,() =>{
         beforeEach(()=>{
@@ -36,6 +32,47 @@ describe('Main Page Test',()=>{
         cy.get('.Header__MainNav > .HorizontalList')
             .should(`exist`)
     });
+    it(`Section Home`, () => {
+        cy.get('.is-active > .Heading')
+            .should(`exist`)
+        });
+        it(`Section New In`, () => {
+            cy.get('.Header__MainNav > .HorizontalList > :nth-child(2) > .Heading')
+                .should(`exist`)
+        });
+        it(`Section Collections`, () => {
+            cy.get('.Header__MainNav > .HorizontalList > :nth-child(3)')
+                .should(`exist`)
+        });
+        it(`Section Personal`, () => {
+            cy.get('.HorizontalList > :nth-child(4) > .Heading')
+                .should(`exist`)
+        });
+        it(`Section Businesses`, () => {
+            cy.get('.HorizontalList > :nth-child(5) > .Heading')
+                .should(`exist`)
+        });
+        it(`Section Tech Talk`, () => {
+            cy.get('.HorizontalList > :nth-child(6) > .Heading')
+                .should(`exist`)
+        });
+        it(`Section About us`, () => {
+            cy.get('.HorizontalList > :nth-child(7) > .Heading')
+                .should(`exist`)
+        });
+        it(`Section Contact`, () => {
+            cy.get('.HorizontalList > :nth-child(8) > .Heading')
+                .should(`exist`)
+        });
+        it(`Section Call`, () => {
+            cy.get('.HorizontalList > :nth-child(9) > .Heading')
+                .should(`exist`)
+        });
+        it(`Search`, () => {
+            cy.get('.Header__SecondaryNav > .HorizontalList > :nth-child(2) > .Heading')
+                .should(`exist`)
+        });
+
     });
 
     context(`viewport mobile`,() => {
