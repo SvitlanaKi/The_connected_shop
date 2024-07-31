@@ -1,17 +1,22 @@
 describe('Main Page Test',()=>{
     beforeEach(()=>{
-        cy.visit('https://theconnectedshop.com')
+        cy.visit('https://theconnectedshop.com');
+        cy.viewport(1920,1080);
     });
+    //команда для приховання помилок самого сайту
+    Cypress.on(`uncaught:exception`,(err,runnable) =>{
+        return false;
+        });
     //Кроки
     it('Site is Open and Check url',()=>{
      cy.url()
          .should('eq','https://theconnectedshop.com/')
     });
 
-    context(`viewport descktop`,() =>{
+   /* context(`viewport desktop`,() =>{
         beforeEach(()=>{
             cy.viewport(1920,1080);
-            });
+            });*/
 
 
     it('should have the correct header elements', () => {
@@ -37,8 +42,15 @@ describe('Main Page Test',()=>{
             .should(`exist`)
         });
         it(`Section New In`, () => {
-            cy.get('.Header__MainNav > .HorizontalList > :nth-child(2) > .Heading')
+           cy.get('.Header__MainNav > .HorizontalList > :nth-child(2) > .Heading')
+            //cy.get(`.HorizontalList__Item`).eq(1).then(($el)=>{
+                //const text = $el.text();
+               // cy.task(`log`,`Svitlana`+ text);
+                //expect(text).to.include(`New In`)
+           // });
                 .should(`exist`)
+                .contains(`a`,  `New In`)
+                .should(`have.attr`,`href`, `/collections/new-in`);
         });
         it(`Section Collections`, () => {
             cy.get('.Header__MainNav > .HorizontalList > :nth-child(3)')
@@ -73,12 +85,11 @@ describe('Main Page Test',()=>{
                 .should(`exist`)
         });
 
-    });
 
-    context(`viewport mobile`,() => {
+    /*context(`viewport mobile`,() => {
         beforeEach(() => {
             cy.viewport(320, 520);
         });
         //іт для моб версії
-    });
+    });*/
 });
