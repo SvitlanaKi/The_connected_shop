@@ -13,11 +13,6 @@ describe('Main Page Test',()=>{
          .should('eq','https://theconnectedshop.com/')
     });
 
-   /* context(`viewport desktop`,() =>{
-        beforeEach(()=>{
-            cy.viewport(1920,1080);
-            });*/
-
 
     it('should have the correct header elements', () => {
         cy.get('#section-header')
@@ -136,9 +131,11 @@ describe('Main Page Test',()=>{
     it(`Search Href`, () => {
         cy.get('.Header__SecondaryNav > .HorizontalList > :nth-child(2) > .Heading')
             .should(`exist`)
-            .contains(`a`,  `Search`)
-            .should(`have.attr`,`href`, `/search`);
+            .and(`be.visible`)
+            .and(`have.attr`,`href`, `/search`)
+            .contains(`a`,  `Search`);
     });
+
     /*context(`viewport mobile`,() => {
         beforeEach(() => {
             cy.viewport(320, 520);
