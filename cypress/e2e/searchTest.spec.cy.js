@@ -56,6 +56,15 @@ it(`Unsuccessful search for a product`, () =>{
         cy.get('p')
             .should('contain', 'No results could be found');
     });
+    //перевірка параметрів іконки пошук
+    cy.get('.Search__InputIconWrapper > .hidden-phone')
+        .should(`be.visible`)
+        .and('have.attr', 'stroke', 'currentColor')
+        .and('have.attr', 'stroke-width', '2')
+        .and('have.attr', 'fill', 'none')
+        .and('have.attr', 'fill-rule', 'evenodd')
+        .and('have.attr', 'stroke-linecap', 'square')
+
 });
 
 });
