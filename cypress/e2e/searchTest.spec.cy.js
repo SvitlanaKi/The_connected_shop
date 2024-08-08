@@ -57,14 +57,21 @@ it(`Unsuccessful search for a product`, () =>{
             .should('contain', 'No results could be found');
     });
     //перевірка параметрів іконки пошук
-    cy.get('.Search__InputIconWrapper > .hidden-phone')
-        .should(`be.visible`)
+    cy.get('span.hidden-phone > svg.Icon--search-desktop')
+        .should('have.attr', 'role', 'presentation')
+        .and('have.attr', 'viewBox', '0 0 21 21');
+    cy.get('span.hidden-phone > svg.Icon--search-desktop > g')
+        .should('have.attr', 'transform', 'translate(1 1)')
         .and('have.attr', 'stroke', 'currentColor')
         .and('have.attr', 'stroke-width', '2')
         .and('have.attr', 'fill', 'none')
         .and('have.attr', 'fill-rule', 'evenodd')
-        .and('have.attr', 'stroke-linecap', 'square')
-
+        .and('have.attr', 'stroke-linecap', 'square');
+    cy.get('span.hidden-phone > svg.Icon--search-desktop > g > path')
+        .should('have.attr', 'd', 'M18 18l-5.7096-5.7096');
+    cy.get('span.hidden-phone > svg.Icon--search-desktop > g > circle')
+        .should('have.attr', 'cx', '7.2')
+        .and('have.attr', 'cy', '7.2')
+        .and('have.attr', 'r', '7.2');
 });
-
 });
